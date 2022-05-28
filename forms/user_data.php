@@ -20,19 +20,11 @@ echo "COUNTRY " . $country . "<br>";
 $filename = "userdata.csv";    
 $handle = fopen($filename, "a");//open file in read mode 
 $no_row = count(file("userdata.csv"));
-
-$result = array(
-    'sr_no'=> $no_row,
-    'name'=> $name,
-    'email'=> $email,
-    'bday'=> $bday,
-    'gender'=> $gender,
-    'country'=> $country,
-);
-//fputcsv($handle,$result);
-fwrite($handle,implode(",",$result));//write to file)  
+//converting array into string
+$result = $no_row.", ".$name.", ".$email.", ".$bday.", ".$gender.", ".$country;
+fwrite($handle,$result."\n");//write to file)  
 fclose($handle);//close file
-print_r(implode(",",$result));
+print_r($result);
 
 
 
